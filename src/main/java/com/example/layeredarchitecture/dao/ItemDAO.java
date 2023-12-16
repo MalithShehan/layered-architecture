@@ -19,4 +19,6 @@ public interface ItemDAO {
 
     public String genarateNewCode() throws SQLException, ClassNotFoundException ;
 
+    public ItemDTO findItem(String code) throws SQLException, ClassNotFoundException ;
+
 }
