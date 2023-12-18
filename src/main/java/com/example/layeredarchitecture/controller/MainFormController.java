@@ -67,7 +67,7 @@ public class MainFormController {
     private void playMouseEnterAnimation(MouseEvent event) {
         if (event.getSource() instanceof ImageView) {
             ImageView icon = (ImageView) event.getSource();
-
+//boiler plate codes
             switch (icon.getId()) {
                 case "imgCustomer":
                     lblMenu.setText("Manage Customers");
@@ -133,7 +133,7 @@ public class MainFormController {
                 TranslateTransition tt = new TranslateTransition(Duration.millis(350), subScene.getRoot());
                 tt.setFromX(-subScene.getWidth());
                 tt.setToX(0);
-                tt.play(); //new push
+                tt.play();
 
             }
         }
