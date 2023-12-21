@@ -1,7 +1,7 @@
 package com.example.layeredarchitecture.controller;
 
-import com.example.layeredarchitecture.dao.CustomerDAO;
-import com.example.layeredarchitecture.dao.CustomerDAOImpl;
+import com.example.layeredarchitecture.dao.custom.CustomerDAO;
+import com.example.layeredarchitecture.dao.custom.impl.CustomerDAOImpl;
 import com.example.layeredarchitecture.model.CustomerDTO;
 import com.example.layeredarchitecture.view.tdm.CustomerTM;
 import com.jfoenix.controls.JFXButton;
@@ -38,10 +38,9 @@ public class ManageCustomersFormController {
     public TableView<CustomerTM> tblCustomers;
     public JFXButton btnAddNewCustomer;
 
-    private CustomerDAO customerDAO = new CustomerDAOImpl();
-
+    //property injection (Dependency injection)
+    CustomerDAO customerDAO=new CustomerDAOImpl();
     public void initialize() {
-        //boiler plate codes
         tblCustomers.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
         tblCustomers.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
         tblCustomers.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -72,12 +71,14 @@ public class ManageCustomersFormController {
         tblCustomers.getItems().clear();
         /*Get all customers*/
         try {
+            ArrayList<CustomerDTO> allCustomer = customerDAO.getAll();
+            for (CustomerDTO dto:allCustomer) {
+                tblCustomers.getItems().add(
+                        new CustomerTM(
+                                dto.getId(),
+                                dto.getName(),
+                                dto.getAddress()));
 
-
-            List<CustomerDTO> allCustomers = customerDAO.getAll();
-
-            for (CustomerDTO dto : allCustomers){
-                tblCustomers.getItems().add(new CustomerTM(dto.getId(), dto.getName(),dto.getAddress()));
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -147,8 +148,8 @@ public class ManageCustomersFormController {
                 if (existCustomer(id)) {
                     new Alert(Alert.AlertType.ERROR, id + " already exists").show();
                 }
-
                 boolean isSaved = customerDAO.save(new CustomerDTO(id, name, address));
+
                 if (isSaved) {
                     tblCustomers.getItems().add(new CustomerTM(id, name, address));
                 }
@@ -165,8 +166,8 @@ public class ManageCustomersFormController {
                 if (!existCustomer(id)) {
                     new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + id).show();
                 }
-
-                customerDAO.update(new CustomerDTO(id,name,address));
+                CustomerDTO dto = new CustomerDTO(id,name,address);
+                customerDAO.update(dto);
 
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Failed to update the customer " + id + e.getMessage()).show();
@@ -185,8 +186,8 @@ public class ManageCustomersFormController {
 
 
     boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
-        CustomerDAO customerDAO = new CustomerDAOImpl();
         return customerDAO.exist(id);
+
     }
 
 
@@ -197,9 +198,7 @@ public class ManageCustomersFormController {
             if (!existCustomer(id)) {
                 new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + id).show();
             }
-
             customerDAO.delete(id);
-
             tblCustomers.getItems().remove(tblCustomers.getSelectionModel().getSelectedItem());
             tblCustomers.getSelectionModel().clearSelection();
             initUI();
@@ -213,8 +212,7 @@ public class ManageCustomersFormController {
 
     private String generateNewId() {
         try {
-
-            return customerDAO.generateNextId();
+            return customerDAO.generateID();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Failed to generate a new id " + e.getMessage()).show();
         } catch (ClassNotFoundException e) {

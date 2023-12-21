@@ -1,21 +1,17 @@
-package com.example.layeredarchitecture.dao.custom;
+package com.example.layeredarchitecture.dao;
+
+import com.example.layeredarchitecture.model.CustomerDTO;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 
 public interface CrudDAO<T> {
-    public List<T> getAll() throws SQLException, ClassNotFoundException ;
+    ArrayList<T> getAll() throws SQLException, ClassNotFoundException;
+    boolean save(T dto) throws SQLException, ClassNotFoundException ;
+    boolean update(T dto) throws SQLException, ClassNotFoundException ;
+    boolean exist(String id) throws SQLException, ClassNotFoundException ;
+    void delete(String id) throws SQLException, ClassNotFoundException ;
+    String generateID() throws SQLException, ClassNotFoundException ;
+    public T search(String id) throws SQLException, ClassNotFoundException;
 
-    public boolean save(T dto) throws SQLException, ClassNotFoundException ;
-
-    public boolean update(T dto) throws SQLException, ClassNotFoundException ;
-
-    public boolean delete(String id) throws SQLException, ClassNotFoundException ;
-
-    public boolean exist(String id) throws SQLException, ClassNotFoundException ;
-
-    public String generateNextId() throws SQLException, ClassNotFoundException ;
-
-
-    public T getDetail(String id) throws SQLException, ClassNotFoundException ;
 }
