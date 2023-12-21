@@ -1,11 +1,14 @@
 package com.example.layeredarchitecture;
 
+import com.example.layeredarchitecture.dao.custom.impl.QueryDAOImpl;
+import com.example.layeredarchitecture.model.CustomDTO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class HelloApplication extends Application {
     @Override
@@ -18,6 +21,13 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+       launch();
+//        try {
+//            QueryDAOImpl queryDAO = new QueryDAOImpl();
+//            CustomDTO customDTO = new CustomDTO();
+//            queryDAO.customerOrderDetails(customDTO);
+//        } catch (SQLException | ClassNotFoundException e) {
+//            e.printStackTrace(); // Handle exceptions appropriately
+//        }
     }
 }

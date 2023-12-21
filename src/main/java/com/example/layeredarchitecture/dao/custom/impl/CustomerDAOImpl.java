@@ -1,7 +1,10 @@
 package com.example.layeredarchitecture.dao.custom.impl;
 import com.example.layeredarchitecture.dao.SQLUtil;
 import com.example.layeredarchitecture.dao.custom.CustomerDAO;
+import com.example.layeredarchitecture.model.CustomDTO;
 import com.example.layeredarchitecture.model.CustomerDTO;
+import com.example.layeredarchitecture.model.ItemDTO;
+import com.example.layeredarchitecture.model.OrderDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -65,4 +68,5 @@ public class CustomerDAOImpl implements CustomerDAO {
         rst.next();
         return new CustomerDTO(id + "", rst.getString("name"), rst.getString("address"));
     }
+
 }
