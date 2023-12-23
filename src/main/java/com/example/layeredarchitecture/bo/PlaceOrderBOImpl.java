@@ -19,7 +19,7 @@ import java.util.List;
 public class PlaceOrderBOImpl implements PlaceOrderBO{
     CustomerBO customerBO = new CustomerBOImpl();
     ItemBO itemBO = new ItemBOImpl();
-    QueryDAO queryDAO=new QueryDAOImpl();
+    QueryDAO queryDAO = new QueryDAOImpl();
     OrderBO orderBO = new OrderBOImpl();
     OrderDetailsBO orderDetailsBO = new OrderDetailsBOImpl();
 
