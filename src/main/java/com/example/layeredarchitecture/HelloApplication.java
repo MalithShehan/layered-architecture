@@ -22,12 +22,12 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
        launch();
-//        try {
-//            QueryDAOImpl queryDAO = new QueryDAOImpl();
-//            CustomDTO customDTO = new CustomDTO();
-//            queryDAO.customerOrderDetails(customDTO);
-//        } catch (SQLException | ClassNotFoundException e) {
-//            e.printStackTrace(); // Handle exceptions appropriately
-//        }
+        try {
+            QueryDAOImpl queryDAO = new QueryDAOImpl();
+            CustomDTO customDTO = new CustomDTO();
+            queryDAO.customerOrderDetails(customDTO);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); // Handle exceptions appropriately
+        }
     }
 }
