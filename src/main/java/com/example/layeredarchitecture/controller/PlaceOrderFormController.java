@@ -2,10 +2,9 @@ package com.example.layeredarchitecture.controller;
 
 import com.example.layeredarchitecture.bo.BOFactory;
 import com.example.layeredarchitecture.bo.custom.PlaceOrderBO;
-import com.example.layeredarchitecture.bo.custom.PlaceOrderBOImpl;
-import com.example.layeredarchitecture.model.CustomerDTO;
-import com.example.layeredarchitecture.model.ItemDTO;
-import com.example.layeredarchitecture.model.OrderDetailDTO;
+import com.example.layeredarchitecture.dto.CustomerDTO;
+import com.example.layeredarchitecture.dto.ItemDTO;
+import com.example.layeredarchitecture.dto.OrderDetailDTO;
 import com.example.layeredarchitecture.view.tdm.OrderDetailTM;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -49,12 +48,6 @@ public class PlaceOrderFormController {
     public Label lblDate;
     public Label lblTotal;
     private String orderId;
-
-//    CustomerBO customerBO = new CustomerBOImpl();
-//    ItemBO itemBO = new ItemBOImpl();
-//    QueryDAO queryDAO=new QueryDAOImpl();
-//    OrderBO orderBO = new OrderBOImpl();
-//    OrderDetailsBO orderDetailsBO = new OrderDetailsBOImpl();
     PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PLACE_ORDER);
     public void initialize() throws SQLException, ClassNotFoundException {
 

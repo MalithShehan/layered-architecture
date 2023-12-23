@@ -1,7 +1,7 @@
 package com.example.layeredarchitecture;
 
 import com.example.layeredarchitecture.dao.custom.impl.QueryDAOImpl;
-import com.example.layeredarchitecture.model.CustomDTO;
+import com.example.layeredarchitecture.dto.CustomDTO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

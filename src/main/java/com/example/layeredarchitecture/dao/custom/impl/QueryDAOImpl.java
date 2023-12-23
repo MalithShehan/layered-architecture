@@ -2,7 +2,7 @@ package com.example.layeredarchitecture.dao.custom.impl;
 
 import com.example.layeredarchitecture.dao.custom.QueryDAO;
 import com.example.layeredarchitecture.db.DBConnection;
-import com.example.layeredarchitecture.model.CustomDTO;
+import com.example.layeredarchitecture.dto.CustomDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

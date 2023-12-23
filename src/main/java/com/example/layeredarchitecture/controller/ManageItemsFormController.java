@@ -2,10 +2,10 @@ package com.example.layeredarchitecture.controller;
 
 import com.example.layeredarchitecture.bo.BOFactory;
 import com.example.layeredarchitecture.bo.custom.ItemBO;
-import com.example.layeredarchitecture.bo.custom.ItemBOImpl;
 import com.example.layeredarchitecture.dao.custom.ItemDAO;
 import com.example.layeredarchitecture.dao.custom.impl.ItemDAOImpl;
-import com.example.layeredarchitecture.model.ItemDTO;
+import com.example.layeredarchitecture.dto.ItemDTO;
+import com.example.layeredarchitecture.entity.Item;
 import com.example.layeredarchitecture.view.tdm.ItemTM;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
@@ -201,7 +201,7 @@ public class ManageItemsFormController {
                 }
                 /*Update Item*/
                 ItemDAO impl = new ItemDAOImpl();
-                impl.update(new ItemDTO(code,description,unitPrice,qtyOnHand));
+                impl.update(new Item(code,description,unitPrice,qtyOnHand));
 
                 ItemTM selectedItem = tblItems.getSelectionModel().getSelectedItem();
                 selectedItem.setDescription(description);
