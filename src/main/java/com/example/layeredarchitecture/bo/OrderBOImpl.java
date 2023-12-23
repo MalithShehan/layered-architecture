@@ -10,37 +10,37 @@ import java.util.ArrayList;
 public class OrderBOImpl implements OrderBO{
     OrderDAO orderDAO = new OrderDAOImpl();
     @Override
-    public ArrayList<OrderDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<OrderDTO> getAllOrder() throws SQLException, ClassNotFoundException {
         return orderDAO.getAll();
     }
 
     @Override
-    public boolean save(OrderDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean saveOrder(OrderDTO dto) throws SQLException, ClassNotFoundException {
         return orderDAO.save(dto);
     }
 
     @Override
-    public boolean update(OrderDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean updateOrder(OrderDTO dto) throws SQLException, ClassNotFoundException {
         return orderDAO.update(dto);
     }
 
     @Override
-    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+    public boolean existOrder(String id) throws SQLException, ClassNotFoundException {
         return orderDAO.exist(id);
     }
 
     @Override
-    public String generateID() throws SQLException, ClassNotFoundException {
+    public String generateOrderID() throws SQLException, ClassNotFoundException {
         return orderDAO.generateID();
     }
 
     @Override
-    public void delete(String id) throws SQLException, ClassNotFoundException {
+    public void deleteOrder(String id) throws SQLException, ClassNotFoundException {
          orderDAO.delete(id);
     }
 
     @Override
-    public OrderDTO search(String id) throws SQLException, ClassNotFoundException {
+    public OrderDTO searchOrder(String id) throws SQLException, ClassNotFoundException {
         return orderDAO.search(id);
     }
 }

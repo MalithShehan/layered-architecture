@@ -9,11 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface OrderBO {
-    public ArrayList<OrderDTO> getAll() throws SQLException, ClassNotFoundException;
-    public boolean save(OrderDTO dto) throws SQLException, ClassNotFoundException ;
-    public boolean update(OrderDTO dto) throws SQLException, ClassNotFoundException ;
-    public boolean exist(String id) throws SQLException, ClassNotFoundException ;
-    public String generateID() throws SQLException, ClassNotFoundException ;
-    public void delete(String id) throws SQLException, ClassNotFoundException ;
-    public OrderDTO search(String id) throws SQLException, ClassNotFoundException ;
+    public ArrayList<OrderDTO> getAllOrder() throws SQLException, ClassNotFoundException;
+    public boolean saveOrder(OrderDTO dto) throws SQLException, ClassNotFoundException ;
+    public boolean updateOrder(OrderDTO dto) throws SQLException, ClassNotFoundException ;
+    public boolean existOrder(String id) throws SQLException, ClassNotFoundException ;
+    public String generateOrderID() throws SQLException, ClassNotFoundException ;
+    public void deleteOrder(String id) throws SQLException, ClassNotFoundException ;
+    public OrderDTO searchOrder(String id) throws SQLException, ClassNotFoundException ;
 }
